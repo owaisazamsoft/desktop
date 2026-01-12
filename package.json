@@ -1,0 +1,37 @@
+{
+  "name": "my-vue-app",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@fontsource/inter": "^5.2.8",
+    "@fortawesome/fontawesome-free": "^7.1.0",
+    "@jamescoyle/vue-icon": "^0.1.2",
+    "@mdi/font": "^7.4.47",
+    "@mdi/js": "^7.4.47",
+    "axios": "^1.13.2",
+    "chart.js": "^4.5.1",
+    "install": "^0.13.0",
+    "lodash": "^4.17.21",
+    "material-design-icons-iconfont": "^6.7.0",
+    "material-symbols": "^0.39.1",
+    "npm": "^11.7.0",
+    "pinia": "^3.0.4",
+    "vue": "^3.5.24",
+    "vue-router": "^4.6.4",
+    "vuetify": "^3.11.6",
+    "xlsx": "^0.18.5"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^6.0.1",
+    "vite": "npm:rolldown-vite@7.2.5"
+  },
+  "overrides": {
+    "vite": "npm:rolldown-vite@7.2.5"
+  }
+}
