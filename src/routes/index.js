@@ -11,6 +11,10 @@ import User from '@/views/users/index.vue'
 import Department from '@/views/departments/index.vue'
 import Product from '@/views/products/index.vue'
 import Lot from '@/views/lots/index.vue'
+import Stitching from '@/views/stitchings/index.vue'
+import Payment from '@/views/payments/index.vue'
+import ledger from '@/views/reports/ledger.vue'
+import ledgerDetail from '@/views/reports/ledgerDetail.vue'
 
 
 const routes = [
@@ -23,8 +27,10 @@ const routes = [
             { path: 'departments', component: Department},
             { path: 'products', component: Product},
             { path: 'lots', component: Lot},
-            
-            
+            { path: 'stitchings', component: Stitching},
+            { path: 'payments', component: Payment},
+            { path: 'reports/ledger', component: ledger},
+            { path: 'reports/ledger-detail/:id', component: ledgerDetail},
         ],
     },
     {

@@ -1,5 +1,5 @@
 export default [
-       
+
         {
             icon: "mdi-view-dashboard-outline",
             label: "Dashboard",
@@ -7,7 +7,7 @@ export default [
         },
         {
             icon: "mdi-account-multiple",
-            label: "Users",
+            label: "Employes",
             path: "/users",
         },
         {
@@ -24,6 +24,27 @@ export default [
             icon: "mdi-account-multiple",
             label: "Lots",
             path: "/lots",
+        },
+         {
+            icon: "mdi-account-multiple",
+            label: "Stitching",
+            path: "/stitchings",
+        },
+        {
+            icon: "mdi-account-multiple",
+            label: "Payments",
+            path: "/payments",
+        },
+        {
+            icon: "mdi-account-multiple",
+            label: "Reports",
+            children: [
+                {
+                    icon: "mdi-account-multiple",
+                    label: "Ledger",
+                    path: "/reports/ledger",
+                },
+            ],
         },
       
 

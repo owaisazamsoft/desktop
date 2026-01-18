@@ -1,6 +1,7 @@
 import department from "@/enums/department";
 import group from "@/enums/group";
 import role from "@/enums/role";
+import category from "@/enums/category";
 import { faker } from "@faker-js/faker";
 import _ from "lodash";
 
@@ -30,7 +31,7 @@ const products = async (count) => {
         return {
             id: i + 1,
             code: faker.string.numeric(4),
-            category:_.sample(categories , 1),
+            category:_.sample(category , 1),
             name: faker.commerce.product(),
             rate: faker.commerce.price(),
         };
@@ -76,11 +77,15 @@ const lots = async (count) => {
 
 
   const users = async (count) => {
+   
+        // let departments = JSON.parse(localStorage.getItem('departments') || '[]');
+        // let departmentIds = departments.map(department => department.id);
 
         const data = Array.from({ length: count }, (v,i) => {
 
             let gender = faker.person.sex();
-            const randomCount = _.random(1, types.length);
+            const randomCount = _.random(1, role.length);
+            
 
             return {
                 id:  i+1,
@@ -88,8 +93,9 @@ const lots = async (count) => {
                 email: faker.internet.email(),
                 date_of_birth:faker.date.birthdate({ min: 18, max: 60, mode: 'age' }),
                 gender:gender,
-                type:  _.sampleSize(types,randomCount),
-                roles:  _.sampleSize(roles,randomCount),
+                department:_.sample(department,1),
+                type:  _.sampleSize(group,randomCount),
+                roles:  _.sampleSize(role,randomCount),
                 address:faker.location.streetAddress(),
             };
 
@@ -112,15 +118,16 @@ const stitching = async (count) => {
 
         let products = JSON.parse(localStorage.getItem('products') || '[]');
         let productId = products.map(product => product.id);
-        const randomDate = faker.date.past({ years: 5 });
-
-        let rate = faker.number.int({ min: 10, max: 50});
-        const quantity = faker.number.int({ min: 1, max: 300});
+       
 
         const data = Array.from({ length: count }, (v,i) => {
+            const randomDate = faker.date.past({ years: 5 });
+            let rate = faker.number.int({ min: 10, max: 50});
+            const quantity = faker.number.int({ min: 1, max: 300});
+
             return {
                 id: i + 1,
-                department: _.sample(departments,1),
+                department: _.sample(department,1),
                 product: _.sample(productId,1),
                 lot: _.sample(lotId,1),
                 user:_.sample(userIds,1),
@@ -142,21 +149,27 @@ const stitching = async (count) => {
 
 const payments = async (count) => {
 
-        let users = JSON.parse(localStorage.getItem('payments') || '[]');
+        let users = JSON.parse(localStorage.getItem('users') || '[]');
         let userIds = users.map(user => user.id);
-        const randomDate = faker.date.past({ years: 5 });
+       
+         
 
         const data = Array.from({ length: count }, (v,i) => {
+             const randomDate = faker.date.past({ years: 5 });
+             const amount = faker.number.int({ min: 1, max: 300});
             return {
                 id: i + 1,
-                department: _.sample(departments,1),
+                department: _.sample(department,1),
                 user:_.sample(userIds,1),
                 date: randomDate.toISOString(),
-                debit: _.sample(departments,1),
-                credit: _.sample(departments,1),
-                description: "",
+                description:"Payment",
+                debit: amount,
+                credit: 0,               
             };
         });
+
+        console.log(data);
+        
         
         
         localStorage.setItem('payments',JSON.stringify(data))
