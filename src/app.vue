@@ -14,6 +14,7 @@ import { useThemeStore } from './stores/themeStore';
 import Alert from '@/components/alert.vue'
 import Overlay from '@/components/overlay.vue'
 import { useTheme } from 'vuetify';
+import start from './plugins/dummy';
 
 
 
@@ -32,15 +33,26 @@ export default {
   },
   methods: {
 
+  async load(){
+
+      start().then((res) => {
+          console.log(res);
+          this.loading = false;
+          
+        }).catch((error) => {
+          console.log(error);
+          this.loading = false;
+        })
+  }
 
   },
   async mounted() {
 
-    
-  
 
+    this.load();
 
   },
+  
 };
 
 </script>

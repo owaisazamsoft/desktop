@@ -26,6 +26,24 @@ export default class {
     }
 
 
+    static async saveStorage(table:string, data:any) {
+        try {
+             return localStorage.setItem(table, JSON.stringify(data));
+        } catch (error) {
+            throw await errorHandler(error);
+        }
+    }
+
+    static async getStorage(table:string) {
+        try {
+            const data = localStorage.getItem(table);
+            return data ? JSON.parse(data) : [];
+        } catch (error) {
+            throw await errorHandler(error);
+        }
+    }
+
+
     static async get(url:string,options:any) {
         
         try {

@@ -8,6 +8,9 @@ import NotFound from "@/views/404.vue"
 import Dashboard from '@/views/dashboard/index.vue';
 
 import User from '@/views/users/index.vue'
+import Department from '@/views/departments/index.vue'
+import Product from '@/views/products/index.vue'
+import Lot from '@/views/lots/index.vue'
 
 
 const routes = [
@@ -17,6 +20,11 @@ const routes = [
         children: [
             { path: 'dashboard', component: Dashboard},
             { path: 'users', component: User},
+            { path: 'departments', component: Department},
+            { path: 'products', component: Product},
+            { path: 'lots', component: Lot},
+            
+            
         ],
     },
     {
